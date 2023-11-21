@@ -1,19 +1,19 @@
 class StatisticsController < ApplicationController
   def index
-      @statistics_data = PatientDetail.select(
-        :PatientId, :SchoolName, :Date, :Age, :Grade, :PID, :Gender, :Race, :Ethnicity,
-        '"child_level_details"."ScreenDate" AS DateOfSealentReceived',
-        '"child_level_details"."SealnatsNeeded" AS NoOfSealentNeeded',
-        '"child_level_details"."SealantsRecd" AS NoOfSealentReceived',
-        # 'child_level_details.SealantsReplaced AS NoOfSealentReplaced', Code for Sealent Received
-        # code for "Did they have any Sealent?"
-        "CASE WHEN child_level_details.Experienced = 1 THEN 'Yes' ELSE 'No' END AS CarriesExperience",
-        "CASE WHEN child_level_details.UntreatedDecayFollow = 1 THEN 'Yes' ELSE 'No' END AS UntreatedDecay",
-        "CASE WHEN child_level_details.ReferredDT = 1 THEN 'Yes' ELSE 'No' END AS ReferredForDT",
-        "CASE WHEN child_level_details.ReferredUDT = 1 THEN 'Yes' ELSE 'No' END AS ReferredForUDT",
-        "CASE WHEN child_level_details.FluorideVarnish = 1 THEN 'Yes' ELSE 'No' END AS FluorideVarnish",
-        # :Sealants, :Experienced, :Services
-      ).left_outer_joins(:child_level_details)
+    @statistics_data = PatientDetail.select(
+      :PatientId, :SchoolName, :Date, :Age, :Grade, :PID, :Gender, :Race, :Ethnicity,
+      '"child_level_details"."ScreenDate" AS "DateOfSealentReceived"',
+      '"child_level_details"."SealnatsNeeded" AS "NoOfSealentNeeded"',
+      '"child_level_details"."SealantsRecd" AS "NoOfSealentReceived"',
+      # 'child_level_details.SealantsReplaced AS NoOfSealentReplaced', Code for Sealent Received
+      # code for "Did they have any Sealent?"
+      '"child_level_details"."Experienced" AS "CarriesExperience"',
+      '"child_level_details"."UntreatedDecayFollow" AS "UntreatedDecay"',
+      '"child_level_details"."ReferredDT" AS "ReferredForDT"',
+      '"child_level_details"."ReferredUDT" AS "ReferredForUDT"',
+      '"child_level_details"."FluorideVarnish" AS "FluorideVarnish"'
+      # :Sealants, :Experienced, :Services
+    ).left_outer_joins(:child_level_details)
       
       # You can add more complex logic to calculate statistics here.
 
