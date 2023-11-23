@@ -73,6 +73,26 @@
           null
         ]
       },
+      "C:/Users/Sgull/OneDrive/Desktop/CSCE606/DentistryProjectV2/Sealant-On-Rails-V2/app/channels/application_cable/channel.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "C:/Users/Sgull/OneDrive/Desktop/CSCE606/DentistryProjectV2/Sealant-On-Rails-V2/app/channels/application_cable/connection.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "C:/Users/Sgull/OneDrive/Desktop/CSCE606/DentistryProjectV2/Sealant-On-Rails-V2/app/controllers/child_level_details_controller.rb": {
         "lines": [
           1,
@@ -159,14 +179,6 @@
           1,
           null,
           1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           null,
           1,
@@ -1026,6 +1038,29 @@
           null
         ]
       },
+      "C:/Users/Sgull/OneDrive/Desktop/CSCE606/DentistryProjectV2/Sealant-On-Rails-V2/app/jobs/application_job.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "C:/Users/Sgull/OneDrive/Desktop/CSCE606/DentistryProjectV2/Sealant-On-Rails-V2/app/mailers/application_mailer.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
       "C:/Users/Sgull/OneDrive/Desktop/CSCE606/DentistryProjectV2/Sealant-On-Rails-V2/app/models/child_level_detail.rb": {
         "lines": [
           1,
@@ -1123,60 +1158,9 @@
           null,
           null
         ]
-      },
-      "C:/Users/Sgull/OneDrive/Desktop/CSCE606/DentistryProjectV2/Sealant-On-Rails-V2/app/channels/application_cable/channel.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "C:/Users/Sgull/OneDrive/Desktop/CSCE606/DentistryProjectV2/Sealant-On-Rails-V2/app/channels/application_cable/connection.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "C:/Users/Sgull/OneDrive/Desktop/CSCE606/DentistryProjectV2/Sealant-On-Rails-V2/app/jobs/application_job.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "C:/Users/Sgull/OneDrive/Desktop/CSCE606/DentistryProjectV2/Sealant-On-Rails-V2/app/mailers/application_mailer.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1700459686
+    "timestamp": 1700766230
   },
   "Cucumber Features": {
     "coverage": {
@@ -1473,14 +1457,6 @@
           2,
           null,
           2,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           null,
           1,
@@ -2361,6 +2337,6 @@
         }
       }
     },
-    "timestamp": 1700459750
+    "timestamp": 1700765193
   }
 }
