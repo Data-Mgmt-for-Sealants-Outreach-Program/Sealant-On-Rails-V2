@@ -1,6 +1,6 @@
 Feature: Using the Screening, Preventive, and Follow Up Services Table
 
-    Scenario: Filling Out The Table
+    Scenario: Choosing a Screening Button
         Given I am on the Patient Details Form page
         And I enter the Patientid field with 23
         And I enter the Program Name field with "sealant visit"
@@ -13,9 +13,8 @@ Feature: Using the Screening, Preventive, and Follow Up Services Table
         And I visit the child level details forms for the patient with PID = "23-school"
         And I click the "Follow Up" button
         And I click the "ScreeningButton1" button
-        And I click the "D - Decay" radio button
-        And I click the Close button in the pop-up
-        And I click the Submit button
+        And I click the "D" radio button for ScreeningButton "1"
+        And I click the Close button in the pop-up for ScreeningButton "1"
         Then I should see "1" cavities
 
 
