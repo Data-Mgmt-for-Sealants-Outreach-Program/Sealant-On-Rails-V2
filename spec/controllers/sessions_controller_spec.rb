@@ -1,87 +1,3 @@
-# # spec/controllers/sessions_controller_spec.rb
-
-# require 'rails_helper'
-
-# RSpec.describe SessionsController, type: :controller do
-#   describe 'GET #new' do
-#     it 'redirects to root path if user is already logged in' do
-#       user = User.create(username: 'testuser', password: 'password123') # Create a User instance
-
-#       session[:user_id] = user.id
-
-#       get :new
-
-#       expect(response).to redirect_to(root_path)
-#     end
-
-#     it 'renders the new template if user is not logged in' do
-#       get :new
-
-#       expect(response).to render_template('new')
-#     end
-#   end
-
-#   describe 'POST #create' do
-#     it 'logs in with valid credentials' do
-#       user = User.create(username: 'testuser', password: 'password123') # Create a User instance
-
-#       post :create, params: { session: { username: 'testuser', password: 'password123' } }
-
-#       expect(session[:user_id]).to eq(user.id)
-#       expect(response).to redirect_to(root_path)
-#     end
-
-#     it 'redirects to login path with invalid credentials' do
-#       post :create, params: { session: { username: 'invaliduser', password: 'invalidpassword' } }
-
-#       expect(session[:user_id]).to be_nil
-#       expect(flash[:error]).to eq('You are not whitelisted.Contact your administrator.')
-#       expect(response).to redirect_to(login_path)
-#     end
-#   end
-
-#   describe 'DELETE #destroy' do
-#     it 'logs out the user and redirects to root path' do
-#       user = User.create(username: 'testuser', password: 'password123') # Create a User instance
-
-#       session[:user_id] = user.id
-
-#       delete :destroy
-
-#       expect(session[:user_id]).to be_nil
-#       expect(response).to redirect_to(root_path)
-#     end
-#   end
-
-# #   describe 'POST #omniauth' do
-# #     before do
-# #       request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:google] # Replace with your actual provider and data
-# #     end
-
-# #     it 'creates a new user with valid OmniAuth data' do
-# #       expect {
-# #         post :omniauth
-# #       }.to change(User, :count).by(1)
-
-# #       expect(session[:user_id]).to eq(User.last.id)
-# #       expect(response).to redirect_to(root_path)
-# #     end
-
-# #     it 'renders the new template with invalid OmniAuth data' do
-# #       allow(User).to receive(:find_or_create_by).and_return(User.new) # Simulate invalid data
-
-# #       post :omniauth
-
-# #       expect(session[:user_id]).to be_nil
-# #       expect(response).to render_template('new')
-# #     end
-# #   end
-# end
-
-
-#############################
-
-
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
@@ -115,24 +31,6 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
-  # describe 'POST #create' do
-  #   let(:valid_params) { { session: { username: user.username, password: 'password' } } }
-  #   let(:invalid_params) { { session: { username: 'nonexistent_user', password: 'wrong_password' } } }
-
-  #   it 'creates a session for a whitelisted user' do
-  #     Whitelist.create(email: user.email)
-  #     post :create, params: valid_params
-  #     expect(session[:user_id]).to eq(user.id)
-  #     expect(response).to redirect_to(root_path)
-  #   end
-
-  #   it 'redirects to login_path for non-whitelisted user' do
-  #     post :create, params: invalid_params
-  #     expect(session[:user_id]).to be_nil
-  #     expect(response).to redirect_to(login_path)
-  #     expect(flash[:error]).to include('You are not whitelisted.Contact your administrator.')
-  #   end
-  # end
   describe 'POST #create' do
     let(:valid_params) { { session: { username: user.username, password: 'password' } } }
     let(:invalid_params) { { session: { username: 'nonexistent_user', password: 'wrong_password' } } }
@@ -141,7 +39,7 @@ RSpec.describe SessionsController, type: :controller do
       Whitelist.create(email: user.email)
       post :create, params: valid_params
       expect(session[:user_id]).to eq(user.id)
-      expect(response).to redirect_to(login_path)  
+      expect(response).to redirect_to(login_path)
     end
 
     it 'redirects to login_path for non-whitelisted user' do
@@ -150,6 +48,16 @@ RSpec.describe SessionsController, type: :controller do
       expect(response).to redirect_to(login_path)
       expect(flash[:error]).to include('You are not whitelisted.Contact your administrator.')
     end
+
+    context 'with non-whitelisted user' do
+      it 'redirects to login_path' do
+        post :create, params: { session: { username: 'nonexistent_user', password: 'password' } }
+        expect(session[:user_id]).to be_nil
+        expect(response).to redirect_to(login_path)
+        expect(flash[:error]).to include('You are not whitelisted.Contact your administrator.')
+      end
+    end
+
   end
 
   describe 'DELETE #destroy' do
@@ -161,47 +69,51 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
-  # describe 'GET #omniauth' do
-  #   let(:omniauth_auth) { OmniAuth.config.mock_auth[:google_oauth2] } # Replace with your actual provider
-  #   let(:valid_omniauth_params) { { uid: omniauth_auth.uid, provider: omniauth_auth.provider } }
-
-  #   it 'creates or finds a user through omniauth' do
-  #     expect do
-  #       get :omniauth, params: valid_omniauth_params
-  #     end.to change(User, :count).by(1)
-
-  #     expect(session[:user_id]).to eq(User.last.id)
-  #     expect(response).to redirect_to(root_path)
-  #   end
-
-  #   it 'handles authentication failure' do
-  #     allow(User).to receive(:find_or_create_by).and_return(User.new) # Simulate user creation failure
-  #     get :omniauth, params: valid_omniauth_params
-  #     expect(session[:user_id]).to be_nil
-  #     expect(response).to redirect_to(login_path)
-  #     expect(flash[:error]).to include('Failed to create or authenticate user.')
-  #   end
-  # end
-
   describe 'GET #omniauth' do
     let(:omniauth_auth) { OmniAuth.config.mock_auth[:google_oauth2] }
 
+    before do
+      request.env['omniauth.auth'] = omniauth_auth
+      Whitelist.create(email: omniauth_auth.info.email)
+    end
+
     it 'creates or finds a user through omniauth' do
       expect do
-        get :omniauth, params: { uid: omniauth_auth.uid, provider: omniauth_auth.provider }
+        get :omniauth, params: { provider: omniauth_auth.provider, uid: omniauth_auth.uid }
       end.to change(User, :count).by(1)
 
       expect(session[:user_id]).to eq(User.last.id)
       expect(response).to redirect_to(root_path)
+
+      # Reset the session
+      session[:user_id] = nil
     end
 
     it 'handles authentication failure' do
-      allow(User).to receive(:find_or_create_by).and_return(User.new) # Simulate user creation failure
-      get :omniauth, params: { uid: nil, provider: nil }
+      OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentials # Mock an authentication failure
+
+      get :omniauth, params: { provider: 'google_oauth2' }
+
+      puts session[:user_id]
       expect(session[:user_id]).to be_nil
       expect(response).to redirect_to(login_path)
       expect(flash[:error]).to include('Failed to create or authenticate user.')
     end
+
+    context 'with non-whitelisted user' do
+      it 'redirects to login_path' do
+        request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:google_oauth2]
+        # Ensure the user is not on the whitelist
+        Whitelist.where(email: omniauth_auth.info.email).destroy_all
+
+        get :omniauth, params: { provider: 'google_oauth2', uid: '123456' }
+
+        expect(session[:user_id]).to be_nil
+        expect(response).to redirect_to(login_path)
+        expect(flash[:error]).to include('You are not whitelisted.Contact your administrator.')
+      end
+    end
+
   end
 
   describe '#check_whitelist' do
@@ -221,5 +133,3 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 end
-
-
