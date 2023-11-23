@@ -82,14 +82,6 @@ class ChildLevelDetailsController < ApplicationController
     @pid = @patient_detail.PID
 
     @child_data1 = ChildLevelDetail.find_by(PID: @pid)
-    # @abc=@child_data1.PrescriberName
-
-    # if @child_data1.PID.blank?
-    #   @child_data1 = ChildLevelDetail.new
-
-    # end
-
-
   end
 
   private
