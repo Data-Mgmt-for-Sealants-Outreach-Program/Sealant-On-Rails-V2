@@ -50,6 +50,7 @@
     <th>Referred for Dental Treatement?</th>
     <th>Referred for Urgent Dental Treatement?</th>
     <th>Fluoride Varnish Received?</th>
+    <th>No of Decays</th>
   </tr>
 
   <% @statistics_data.each do |data| %>
@@ -72,6 +73,7 @@
       <td><%= data.ReferredForDT %></td>
       <td><%= data.ReferredForUDT %></td>
       <td><%= data.FluorideVarnish %></td>
+      <td><%= data.DecayCount %></td>
 <!--       Add more data columns as needed -->
     </tr>
   <% end %>

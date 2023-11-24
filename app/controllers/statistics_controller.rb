@@ -11,8 +11,10 @@ class StatisticsController < ApplicationController
       '"child_level_details"."UntreatedDecayFollow" AS "UntreatedDecay"',
       '"child_level_details"."ReferredDT" AS "ReferredForDT"',
       '"child_level_details"."ReferredUDT" AS "ReferredForUDT"',
-      '"child_level_details"."FluorideVarnish" AS "FluorideVarnish"'
-      # :Sealants, :Experienced, :Services
+      '"child_level_details"."FluorideVarnish" AS "FluorideVarnish"',
+      '"child_level_details"."UntreatedCavities" AS "DecayCount"'
+
+            # :Sealants, :Experienced, :Services
     ).left_outer_joins(:child_level_details)
       
       # You can add more complex logic to calculate statistics here.

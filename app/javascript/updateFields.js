@@ -47,7 +47,7 @@ function updateSealantPresent() {
     let SealantPresentCount = 0;
 
     for (const tooth in selectedOptions1) {
-        if (selectedOptions1[tooth] === 'S') {
+        if (selectedOptions1[tooth] === 'SS') {
             SealantPresentCount++;
         }
     }
