@@ -103,6 +103,16 @@
         <div class="chart-box">
         <canvas id="groupedChart1"></canvas>
         </div>
+
+        <div class="chart-container" id="chartForAge">
+          <p><strong>Sealants Grouped By Age</strong><p>
+          <canvas id="chartForAgeCanvas" width="400" height="400"></canvas>
+        </div>
+
+        <div class="chart-container" id="ctxForGrade">
+          <p><strong>Sealants Grouped By Grade</strong><p>
+          <canvas id="chartForGradeCanvas" width="400" height="400"></canvas>
+        </div>
     </div>
 
     <div id="tableTab" class="tabcontent">
@@ -150,6 +160,27 @@
         document.getElementById(tabName).style.display = 'block';
         evt.currentTarget.className += ' active';
     }
+
+    var ctxForAge = document.getElementById('chartForAgeCanvas').getContext('2d');
+      var chartForAge = new Chart(ctxForAge, {
+        type: 'pie',
+        data: <%= @age_sealants_chart_data.to_json.html_safe %>,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      });
+
+      var ctxForGrade = document.getElementById('chartForGradeCanvas').getContext('2d');
+      var chartForGrade = new Chart(ctxForGrade, {
+        type: 'pie',
+        data: <%= @grade_sealants_chart_data.to_json.html_safe %>,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      });
+
     var ctxGrouped1 = document.getElementById('groupedChart1').getContext('2d');
         var groupedChart1 = new Chart(ctxGrouped1, {
             type: 'bar',

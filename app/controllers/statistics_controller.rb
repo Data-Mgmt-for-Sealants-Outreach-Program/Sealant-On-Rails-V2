@@ -4,7 +4,7 @@ class StatisticsController < ApplicationController
       :PatientId, :SchoolName, :Date, :Age, :Grade, :PID, :Gender, :Race, :Ethnicity,
       '"child_level_details"."ScreenDate" AS "DateOfSealentReceived"',
       '"child_level_details"."SealnatsNeeded" AS "NoOfSealentNeeded"',
-      '"child_level_details"."SealantsRecd" AS "NoOfSealentReceived"',
+      '"child_level_details"."Sealants" AS "NoOfSealentReceived"',
       # 'child_level_details.SealantsReplaced AS NoOfSealentReplaced', Code for Sealent Received
       # code for "Did they have any Sealent?"
       '"child_level_details"."Experienced" AS "CarriesExperience"',
@@ -39,12 +39,41 @@ class StatisticsController < ApplicationController
     .joins(:child_level_details)
     .group(:SchoolName)
 
-    # @childrenData = @school_data = PatientDetail.select(
-    #   :Age,
-    #   '(SUM(COALESCE("child_level_details"."Sealants", 0))) AS "numberOfSealentRecived"'
-    # )
-    # .joins(:child_level_details)
-    # .group(:Age)
+    # To have pie chart grouped by age
+    childrenDataGroupedByAge  = PatientDetail.select(
+      :Age,
+      '(SUM(COALESCE("child_level_details"."Sealants", 0))) AS "numberOfSealentRecived"'
+    )
+    .joins(:child_level_details)
+    .group(:Age)
+
+    # To have pie chart grouped by Grade
+    childrenDataGroupedByGrade  = PatientDetail.select(
+      :Grade,
+      '(SUM(COALESCE("child_level_details"."Sealants", 0))) AS "numberOfSealentRecived"'
+    )
+    .joins(:child_level_details)
+    .group(:Grade)
+
+    @age_sealants_chart_data = {
+      labels: childrenDataGroupedByAge.map { |data| data.Age.to_s },
+      datasets: [{
+        data: childrenDataGroupedByAge.map { |data| data.numberOfSealentRecived.to_f },
+        backgroundColor: generate_random_colors(childrenDataGroupedByAge.size),
+        borderColor: generate_random_colors(childrenDataGroupedByAge.size, 1),
+        borderWidth: 1
+      }]
+    }
+
+    @grade_sealants_chart_data = {
+      labels: childrenDataGroupedByGrade.map { |data| data.Grade.to_s },
+      datasets: [{
+        data: childrenDataGroupedByGrade.map { |data| data.numberOfSealentRecived.to_f },
+        backgroundColor: generate_random_colors(childrenDataGroupedByGrade.size),
+        borderColor: generate_random_colors(childrenDataGroupedByGrade.size, 1),
+        borderWidth: 1
+      }]
+    }
 
     @school_data_grouped = @school_data.group_by(&:SchoolName)
     @chart_data1 = {
@@ -138,6 +167,14 @@ class StatisticsController < ApplicationController
         }
       ]
     } 
+  end
+
+  def generate_random_colors(count, alpha = 0.2)
+    colors = []
+    count.times do
+      colors << "rgba(#{rand(0..255)}, #{rand(0..255)}, #{rand(0..255)}, #{alpha})"
+    end
+    colors
   end
 
   def event
