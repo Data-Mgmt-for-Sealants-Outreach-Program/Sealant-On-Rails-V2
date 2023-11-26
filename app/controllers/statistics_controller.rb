@@ -26,17 +26,67 @@ class StatisticsController < ApplicationController
 
       # Render the view.
   end
-  def schoolStats
+  def impactReport
     @school_data = PatientDetail.select(
       :SchoolName,
-      :Date,
       'COUNT(DISTINCT "patient_details"."PatientId") AS children_screened',
-      'COUNT(DISTINCT CASE WHEN COALESCE("child_level_details"."FirstSealedNum", 0) > 0 OR COALESCE("child_level_details"."SecondSealedNum", 0) > 0 OR COALESCE("child_level_details"."OtherPermNum", 0) > 0 OR COALESCE("child_level_details"."PrimarySealed", 0) > 0 THEN "patient_details"."PatientId" ELSE NULL END) AS children_rec_sealants',
-      'SUM(COALESCE("child_level_details"."FirstSealedNum", 0) + COALESCE("child_level_details"."SecondSealedNum", 0) + COALESCE("child_level_details"."OtherPermNum", 0) + COALESCE("child_level_details"."PrimarySealed", 0)) AS teeth_sealed',
-      'SUM(CASE WHEN "child_level_details"."FluorideVarnish" = true THEN 1 ELSE 0 END) AS children_with_fluoride'
+      '(SUM(COALESCE("child_level_details"."UntreatedCavities", 0)) / COUNT(DISTINCT "patient_details"."PatientId")) * 100 AS "percentage_cavities"',
+      '(SUM(COALESCE("child_level_details"."UntreatedCavities", 0) + COALESCE("child_level_details"."CarriesExperience", 0) ) / COUNT(DISTINCT "patient_details"."PatientId")) * 100 AS percentage_total_cavities',
+      '(SUM(COALESCE("child_level_details"."Sealants", 0)) / COUNT(DISTINCT "patient_details"."PatientId")) * 100 AS "percentage_Sealant_cavities"',
+      '(SUM(CASE WHEN "child_level_details"."ReferredUDT" = true THEN 1 ELSE 0 END) / COUNT(DISTINCT "patient_details"."PatientId")) * 100 AS "percentage_Urgent_Care"',
+      '(SUM(CASE WHEN "child_level_details"."ReferredDT" = true THEN 1 ELSE 0 END) / COUNT(DISTINCT "patient_details"."PatientId")) * 100 AS "percentage_Restorative_Care"'
     )
     .joins(:child_level_details)
-    .group(:SchoolName, :Date)
+    .group(:SchoolName)
+
+    # @childrenData = @school_data = PatientDetail.select(
+    #   :Age,
+    #   '(SUM(COALESCE("child_level_details"."Sealants", 0))) AS "numberOfSealentRecived"'
+    # )
+    # .joins(:child_level_details)
+    # .group(:Age)
+
+    @school_data_grouped = @school_data.group_by(&:SchoolName)
+    @chart_data1 = {
+      labels: @school_data_grouped.keys,
+      datasets: [
+        {
+          label: '% of Untreated Decay',
+          data: @school_data_grouped.values.map { |school_data| school_data.map(&:percentage_cavities).sum },
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        },
+        {
+          label: '% of Treated and Untreated Decay',
+          data: @school_data_grouped.values.map { |school_data| school_data.map(&:percentage_total_cavities).sum },
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        },
+        {
+          label: '% of Sealants present',
+          data: @school_data_grouped.values.map { |school_data| school_data.map(&:percentage_Sealant_cavities).sum },
+          backgroundColor: 'rgba(255, 206, 86, 0.2)',
+          borderColor: 'rgba(255, 206, 86, 1)',
+          borderWidth: 1
+        },
+        {
+          label: '% needing Urgent Care',
+          data: @school_data_grouped.values.map { |school| school.map(&:percentage_Urgent_Care).sum },
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        },
+        {
+          label: '% needing Restorative Care',
+          data: @school_data_grouped.values.map { |school| school.map(&:percentage_Restorative_Care).sum },
+          backgroundColor: 'rgba(0, 0, 0, 0.2)',
+          borderColor: 'rgba(0, 0, 0, 1)',
+          borderWidth: 1
+        }
+      ]
+    }
   end
 
 

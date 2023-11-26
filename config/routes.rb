@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'statistics/index'
   get 'statistics/school'
   get 'statistics/event'
-  get 'statistics/schoolStats'
+  get 'statistics/impactReport'
   resources :patient_details, param: :PID
   resources :event_details
   resources :whitelists
