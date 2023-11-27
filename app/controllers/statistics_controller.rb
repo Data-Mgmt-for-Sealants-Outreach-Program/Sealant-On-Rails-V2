@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StatisticsController < ApplicationController
   def index
     @statistics_data = PatientDetail.select(
@@ -13,19 +15,19 @@ class StatisticsController < ApplicationController
       '"child_level_details"."ReferredUDT" AS "ReferredForUDT"',
       '"child_level_details"."FluorideVarnish" AS "FluorideVarnish"',
       '"child_level_details"."UntreatedCavities" AS "DecayCount"'
-
-            # :Sealants, :Experienced, :Services
+      # :Sealants, :Experienced, :Services
     ).left_outer_joins(:child_level_details)
-      
-      # You can add more complex logic to calculate statistics here.
 
-      # For example, you can calculate the number of patients with sealants.
-      # @patients_with_sealants = @statistics_data.select { |data| data.Sealants == 'yes' }
+    # You can add more complex logic to calculate statistics here.
 
-      # You can add more statistics calculations as needed.
+    # For example, you can calculate the number of patients with sealants.
+    # @patients_with_sealants = @statistics_data.select { |data| data.Sealants == 'yes' }
 
-      # Render the view.
+    # You can add more statistics calculations as needed.
+
+    # Render the view.
   end
+
   def impactReport
     @school_data = PatientDetail.select(
       :SchoolName,
@@ -36,24 +38,24 @@ class StatisticsController < ApplicationController
       '(SUM(CASE WHEN "child_level_details"."ReferredUDT" = true THEN 1 ELSE 0 END) / COUNT(DISTINCT "patient_details"."PatientId")) * 100 AS "percentage_Urgent_Care"',
       '(SUM(CASE WHEN "child_level_details"."ReferredDT" = true THEN 1 ELSE 0 END) / COUNT(DISTINCT "patient_details"."PatientId")) * 100 AS "percentage_Restorative_Care"'
     )
-    .joins(:child_level_details)
-    .group(:SchoolName)
+                                .joins(:child_level_details)
+                                .group(:SchoolName)
 
     # To have pie chart grouped by age
-    childrenDataGroupedByAge  = PatientDetail.select(
+    childrenDataGroupedByAge = PatientDetail.select(
       :Age,
       '(SUM(COALESCE("child_level_details"."Sealants", 0))) AS "numberOfSealentRecived"'
     )
-    .joins(:child_level_details)
-    .group(:Age)
+                                            .joins(:child_level_details)
+                                            .group(:Age)
 
-    # To have pie chart grouped by Grade
-    childrenDataGroupedByGrade  = PatientDetail.select(
+    # To have pie chart grouped by age
+    childrenDataGroupedByGrade = PatientDetail.select(
       :Grade,
       '(SUM(COALESCE("child_level_details"."Sealants", 0))) AS "numberOfSealentRecived"'
     )
-    .joins(:child_level_details)
-    .group(:Grade)
+                                              .joins(:child_level_details)
+                                              .group(:Grade)
 
     @age_sealants_chart_data = {
       labels: childrenDataGroupedByAge.map { |data| data.Age.to_s },
@@ -118,7 +120,6 @@ class StatisticsController < ApplicationController
     }
   end
 
-
   def school
     @school_data = PatientDetail.select(
       :SchoolName,
@@ -128,8 +129,8 @@ class StatisticsController < ApplicationController
       'SUM(COALESCE("child_level_details"."FirstSealedNum", 0) + COALESCE("child_level_details"."SecondSealedNum", 0) + COALESCE("child_level_details"."OtherPermNum", 0) + COALESCE("child_level_details"."PrimarySealed", 0)) AS teeth_sealed',
       'SUM(CASE WHEN "child_level_details"."FluorideVarnish" = true THEN 1 ELSE 0 END) AS children_with_fluoride'
     )
-    .joins(:child_level_details)
-    .group(:SchoolName, :Date)
+                                .joins(:child_level_details)
+                                .group(:SchoolName, :Date)
 
     @school_data_grouped = @school_data.group_by(&:SchoolName)
 
@@ -166,7 +167,7 @@ class StatisticsController < ApplicationController
           borderWidth: 1
         }
       ]
-    } 
+    }
   end
 
   def generate_random_colors(count, alpha = 0.2)
@@ -180,28 +181,28 @@ class StatisticsController < ApplicationController
   def event
     @event_data = EventDetail.select(
       :EventDate, :School, :ConsentFD, :DenHrs, :DenTravelHrs, :DenTravelMil,
-      :HygHours, :HygTravelHrs, :HygTravelMil, :AssistantHrs, :AssistantTravelHrs, 
+      :HygHours, :HygTravelHrs, :HygTravelMil, :AssistantHrs, :AssistantTravelHrs,
       :AssistantTravelMil, :OtherHrs, :OtherTravelHrs, :OtherTravelMiles,
       :NumberOfSSPDriven, :TotalMilesDriven
     )
 
-
     # Calculate the total hours
-    #total_hours = @event_data.pluck(:DenHrs).sum + @event_data.pluck(:HygHours).sum + @event_data.pluck(:AssistantHrs).sum + @event_data.pluck(:OtherHrs).sum
+    # total_hours = @event_data.pluck(:DenHrs).sum + @event_data.pluck(:HygHours).sum + @event_data.pluck(:AssistantHrs).sum + @event_data.pluck(:OtherHrs).sum
 
     # Format data for the pie chart - Total hours at School
     @school_hrs_chart_data = {
       labels: ['Dentist Hours', 'Hygenist Hours', 'Assistant Hours', 'Other Hours'],
       datasets: [{
-        data: [@event_data.pluck(:DenHrs).sum, @event_data.pluck(:HygHours).sum, @event_data.pluck(:AssistantHrs).sum, @event_data.pluck(:OtherHrs).sum],
+        data: [@event_data.pluck(:DenHrs).sum, @event_data.pluck(:HygHours).sum, @event_data.pluck(:AssistantHrs).sum,
+               @event_data.pluck(:OtherHrs).sum],
         backgroundColor: ['rgba(75, 192, 192, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(54, 162, 235, 0.2)'],
+                          'rgba(255, 99, 132, 0.2)',
+                          'rgba(255, 206, 86, 0.2)',
+                          'rgba(54, 162, 235, 0.2)'],
         borderColor: ['rgba(75, 192, 192, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(54, 162, 235, 1)'],
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(54, 162, 235, 1)'],
         borderWidth: 1
       }]
     }
@@ -210,15 +211,16 @@ class StatisticsController < ApplicationController
     @travel_hrs_chart_data = {
       labels: ['Dentist Travel Hours', 'Hygenist Travel Hours', 'Assistant Travel Hours', 'Other Travel Hours'],
       datasets: [{
-        data: [@event_data.pluck(:DenTravelHrs).sum, @event_data.pluck(:HygTravelHrs).sum, @event_data.pluck(:AssistantHrs).sum, @event_data.pluck(:OtherTravelHrs).sum],
+        data: [@event_data.pluck(:DenTravelHrs).sum, @event_data.pluck(:HygTravelHrs).sum,
+               @event_data.pluck(:AssistantHrs).sum, @event_data.pluck(:OtherTravelHrs).sum],
         backgroundColor: ['rgba(75, 192, 192, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(54, 162, 235, 0.2)'],
+                          'rgba(255, 99, 132, 0.2)',
+                          'rgba(255, 206, 86, 0.2)',
+                          'rgba(54, 162, 235, 0.2)'],
         borderColor: ['rgba(75, 192, 192, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(54, 162, 235, 1)'],
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(54, 162, 235, 1)'],
         borderWidth: 1
       }]
     }
@@ -227,15 +229,16 @@ class StatisticsController < ApplicationController
     @travel_mil_chart_data = {
       labels: ['Dentist Travel Miles', 'Hygenist Travel Miles', 'Assistant Travel Miles', 'Other Travel Miles'],
       datasets: [{
-        data: [@event_data.pluck(:DenTravelMil).sum, @event_data.pluck(:HygTravelMil).sum, @event_data.pluck(:AssistantTravelMil).sum, @event_data.pluck(:OtherTravelMiles).sum],
+        data: [@event_data.pluck(:DenTravelMil).sum, @event_data.pluck(:HygTravelMil).sum,
+               @event_data.pluck(:AssistantTravelMil).sum, @event_data.pluck(:OtherTravelMiles).sum],
         backgroundColor: ['rgba(75, 192, 192, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(54, 162, 235, 0.2)'],
+                          'rgba(255, 99, 132, 0.2)',
+                          'rgba(255, 206, 86, 0.2)',
+                          'rgba(54, 162, 235, 0.2)'],
         borderColor: ['rgba(75, 192, 192, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(54, 162, 235, 1)'],
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(54, 162, 235, 1)'],
         borderWidth: 1
       }]
     }
@@ -256,126 +259,126 @@ class StatisticsController < ApplicationController
     }
 
     # Prepare data for the grouped bar chart
-  @chart_data1 = {
-    labels: school_data.keys,
-    datasets: [
-      {
-        label: 'Dentist',
-        data: school_data.values.map { |school| school.map(&:DenHrs).sum },
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1
-      },
-      {
-        label: 'Hygienist',
-        data: school_data.values.map { |school| school.map(&:HygHours).sum },
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1
-      },
-      {
-        label: 'Assistant',
-        data: school_data.values.map { |school| school.map(&:AssistantHrs).sum },
-        backgroundColor: 'rgba(255, 206, 86, 0.2)',
-        borderColor: 'rgba(255, 206, 86, 1)',
-        borderWidth: 1
-      },
-      {
-        label: 'Other',
-        data: school_data.values.map { |school| school.map(&:OtherHrs).sum },
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1
-      }
-    ]
-  }
+    @chart_data1 = {
+      labels: school_data.keys,
+      datasets: [
+        {
+          label: 'Dentist',
+          data: school_data.values.map { |school| school.map(&:DenHrs).sum },
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Hygienist',
+          data: school_data.values.map { |school| school.map(&:HygHours).sum },
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Assistant',
+          data: school_data.values.map { |school| school.map(&:AssistantHrs).sum },
+          backgroundColor: 'rgba(255, 206, 86, 0.2)',
+          borderColor: 'rgba(255, 206, 86, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Other',
+          data: school_data.values.map { |school| school.map(&:OtherHrs).sum },
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }
+      ]
+    }
 
-  @chart_data2 = {
-    labels: school_data.keys,
-    datasets: [
-      {
-        label: 'Dentist',
-        data: school_data.values.map { |school| school.map(&:DenTravelHrs).sum },
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1
-      },
-      {
-        label: 'Hygienist',
-        data: school_data.values.map { |school| school.map(&:HygTravelHrs).sum },
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1
-      },
-      {
-        label: 'Assistant',
-        data: school_data.values.map { |school| school.map(&:AssistantTravelHrs).sum },
-        backgroundColor: 'rgba(255, 206, 86, 0.2)',
-        borderColor: 'rgba(255, 206, 86, 1)',
-        borderWidth: 1
-      },
-      {
-        label: 'Other',
-        data: school_data.values.map { |school| school.map(&:OtherTravelHrs).sum },
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1
-      }
-    ]
-  }
+    @chart_data2 = {
+      labels: school_data.keys,
+      datasets: [
+        {
+          label: 'Dentist',
+          data: school_data.values.map { |school| school.map(&:DenTravelHrs).sum },
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Hygienist',
+          data: school_data.values.map { |school| school.map(&:HygTravelHrs).sum },
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Assistant',
+          data: school_data.values.map { |school| school.map(&:AssistantTravelHrs).sum },
+          backgroundColor: 'rgba(255, 206, 86, 0.2)',
+          borderColor: 'rgba(255, 206, 86, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Other',
+          data: school_data.values.map { |school| school.map(&:OtherTravelHrs).sum },
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }
+      ]
+    }
 
-  @chart_data3 = {
-    labels: school_data.keys,
-    datasets: [
-      {
-        label: 'Dentist',
-        data: school_data.values.map { |school| school.map(&:DenTravelMil).sum },
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1
-      },
-      {
-        label: 'Hygienist',
-        data: school_data.values.map { |school| school.map(&:HygTravelMil).sum },
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1
-      },
-      {
-        label: 'Assistant',
-        data: school_data.values.map { |school| school.map(&:AssistantTravelMil).sum },
-        backgroundColor: 'rgba(255, 206, 86, 0.2)',
-        borderColor: 'rgba(255, 206, 86, 1)',
-        borderWidth: 1
-      },
-      {
-        label: 'Other',
-        data: school_data.values.map { |school| school.map(&:OtherTravelMiles).sum },
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1
-      }
-    ]
-  }
+    @chart_data3 = {
+      labels: school_data.keys,
+      datasets: [
+        {
+          label: 'Dentist',
+          data: school_data.values.map { |school| school.map(&:DenTravelMil).sum },
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Hygienist',
+          data: school_data.values.map { |school| school.map(&:HygTravelMil).sum },
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Assistant',
+          data: school_data.values.map { |school| school.map(&:AssistantTravelMil).sum },
+          backgroundColor: 'rgba(255, 206, 86, 0.2)',
+          borderColor: 'rgba(255, 206, 86, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Other',
+          data: school_data.values.map { |school| school.map(&:OtherTravelMiles).sum },
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }
+      ]
+    }
 
-  @chart_data4 = {
-    labels: school_data.keys,
-    datasets: [
-      {
-        label: 'Number of Vehicles Driven',
-        data: school_data.values.map { |school| school.map(&:NumberOfSSPDriven).sum },
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1
-      },
-      {
-        label: 'Total Miles Driven',
-        data: school_data.values.map { |school| school.map(&:TotalMilesDriven).sum },
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1
-      }
-    ]
-  }
+    @chart_data4 = {
+      labels: school_data.keys,
+      datasets: [
+        {
+          label: 'Number of Vehicles Driven',
+          data: school_data.values.map { |school| school.map(&:NumberOfSSPDriven).sum },
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Total Miles Driven',
+          data: school_data.values.map { |school| school.map(&:TotalMilesDriven).sum },
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        }
+      ]
+    }
   end
 end

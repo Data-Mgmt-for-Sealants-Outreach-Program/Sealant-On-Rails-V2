@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 # spec/features/statistics_spec.rb
 
 require 'rails_helper'
 
 RSpec.feature 'Statistics', type: :feature do
-  
   scenario 'Check the presence of statistics and buttons' do
     visit '/child_data' # Replace with the actual URL of your page
 
@@ -14,7 +15,7 @@ RSpec.feature 'Statistics', type: :feature do
     expect(page).to have_button('Preventative')
     expect(page).to have_button('Follow Up')
   end
-  
+
   scenario 'Check the default values of statistics' do
     visit '/child_data' # Replace with the actual URL of your page
 
@@ -33,7 +34,8 @@ RSpec.feature 'Statistics', type: :feature do
     end
 
     (4..13).each do |tooth_number|
-      expect(page).to have_selector("button[data-popup='popup#{tooth_number}']", text: "#{tooth_number}#{('A'..'J').to_a[tooth_number - 4]}")
+      expect(page).to have_selector("button[data-popup='popup#{tooth_number}']",
+                                    text: "#{tooth_number}#{('A'..'J').to_a[tooth_number - 4]}")
     end
 
     (14..16).each do |tooth_number|
@@ -45,7 +47,6 @@ RSpec.feature 'Statistics', type: :feature do
       expect(page).to have_selector("td[data-cell='popup#{tooth_number}']", text: 'Make a selection')
     end
   end
-
 end
 
 # # spec/features/screening_spec.rb
@@ -87,5 +88,3 @@ end
 
 #   # Add more scenarios to test other interactions and functionality
 # end
-
-

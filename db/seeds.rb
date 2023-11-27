@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -18,7 +19,7 @@ email_list = [
   { email: 'lovekamp@tamu.edu', role: 'Admin' },
   { email: 'sgullion@tamu.edu', role: 'Admin' },
   { email: 'jaynehete@tamu.edu', role: 'Admin' },
-  { email: 'apurva.mandalika@tamu.edu', role: 'Admin' },
+  { email: 'apurva.mandalika@tamu.edu', role: 'Admin' }
 ]
 
 # db/seeds.rb
@@ -27,5 +28,3 @@ email_list.each do |entry|
     whitelist_email.role = entry[:role]
   end
 end
-
-

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CreateChildLevelDetails < ActiveRecord::Migration[7.1]
   def change
-    create_table :child_level_details , id: false do |t|
+    create_table :child_level_details, id: false do |t|
       t.string :PID, primary_key: true, null: false
       t.string :TeethScreening
       t.string :TeethPreventative
@@ -37,6 +39,5 @@ class CreateChildLevelDetails < ActiveRecord::Migration[7.1]
     end
 
     add_index :child_level_details, :PID, unique: true
-
   end
 end

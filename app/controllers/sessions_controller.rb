@@ -2,7 +2,7 @@
 
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
-  before_action :check_whitelist, only: [:create, :omniauth]
+  before_action :check_whitelist, only: %i[create omniauth]
 
   def new
     return unless logged_in?
@@ -44,13 +44,11 @@ class SessionsController < ApplicationController
     end
   end
 
-
   def check_whitelist
     email = params.dig(:session, :username) || request.env['omniauth.auth']['info']['email']
-    unless Whitelist.exists?(email: email)
-      flash[:error] = 'You are not whitelisted.Contact your administrator.'
-      redirect_to login_path
-    end
-  end
+    return if Whitelist.exists?(email:)
 
+    flash[:error] = 'You are not whitelisted.Contact your administrator.'
+    redirect_to login_path
+  end
 end

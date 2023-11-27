@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
@@ -6,13 +8,13 @@ RSpec.describe SessionsController, type: :controller do
   before do
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
-      provider: 'google_oauth2',
-      uid: '123456',
-      info: {
-        name: 'John Doe',
-        email: 'john@gmail.com'
-      }
-    })
+                                                                         provider: 'google_oauth2',
+                                                                         uid: '123456',
+                                                                         info: {
+                                                                           name: 'John Doe',
+                                                                           email: 'john@gmail.com'
+                                                                         }
+                                                                       })
   end
 
   describe 'GET #new' do
@@ -57,7 +59,6 @@ RSpec.describe SessionsController, type: :controller do
         expect(flash[:error]).to include('You are not whitelisted.Contact your administrator.')
       end
     end
-
   end
 
   describe 'DELETE #destroy' do
@@ -113,7 +114,6 @@ RSpec.describe SessionsController, type: :controller do
         expect(flash[:error]).to include('You are not whitelisted.Contact your administrator.')
       end
     end
-
   end
 
   describe '#check_whitelist' do

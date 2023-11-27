@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ChildLevelDetailsController < ApplicationController
-  before_action :set_child_level_detail, only: %i[ show edit update destroy ]
+  before_action :set_child_level_detail, only: %i[show edit update destroy]
 
   # GET /child_level_details or /child_level_details.json
   def index
@@ -13,20 +15,17 @@ class ChildLevelDetailsController < ApplicationController
 
   # GET /child_level_details/new
   def new
-
-      @child_level_detail = ChildLevelDetail.new
-
+    @child_level_detail = ChildLevelDetail.new
   end
 
   # GET /child_level_details/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /child_level_details or /child_level_details.json
   def create
     pid = params[:child_level_detail][:PID]
     @child_level_detail = ChildLevelDetail.find_by(PID: pid)
-  
+
     respond_to do |format|
       if @child_level_detail
         # A record with the same PID was found; update it
@@ -49,16 +48,15 @@ class ChildLevelDetailsController < ApplicationController
       end
     end
   end
-  
-  
-
 
   # PATCH/PUT /child_level_details/1 or /child_level_details/1.json
   def update
     respond_to do |format|
       if @child_level_detail.update(child_level_detail_params)
-        format.html { redirect_to child_level_detail_url(@child_level_detail),
-                                  notice: "Child level detail was successfully updated." }
+        format.html do
+          redirect_to child_level_detail_url(@child_level_detail),
+                      notice: 'Child level detail was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @child_level_detail }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -72,7 +70,7 @@ class ChildLevelDetailsController < ApplicationController
     @child_level_detail.destroy!
 
     respond_to do |format|
-      format.html { redirect_to child_level_details_url, notice: "Child level detail was successfully destroyed." }
+      format.html { redirect_to child_level_details_url, notice: 'Child level detail was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -85,6 +83,7 @@ class ChildLevelDetailsController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_child_level_detail
     @child_level_detail = ChildLevelDetail.find_by(PID: params[:PID])

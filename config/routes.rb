@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/child_data' => 'child_level_details#child_data'
 
-
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 
   get '/patient_details/:PID', to: 'patient_details#show', as: 'patient_detail_show'
