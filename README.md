@@ -181,7 +181,7 @@ Contact (Project Developer 2): Apurva (apurva.mandalika@tamu.edu)
 Contact (Project Developer 3): Manisha (mpanda27@tamu.edu)
 Contact (Project Developer 4): Sarah (sgullion@tamu.edu)
 Contact (Project Developer 5): Sushant (sushant.shelar@tamu.edu)
-Contact (Project Developer 6): Jay (jaynehete@tamu.edu@tamu.edu)
+Contact (Project Developer 6): Jay (jaynehete@tamu.edu)
 
 Description:
 
