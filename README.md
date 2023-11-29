@@ -111,11 +111,6 @@ By following these steps, you have set up the necessary configurations in the Go
 to enable Google OAuth for the application. This allows the app to authenticate users using their Google accounts.
 
 ## Add OAuth ID and Secret to Rails Credentials
-
-**You will face an error here regarding Rails not being able to decrypt the credentials file.
-The reason is because you have cloned the repository and the master key is not the same as the one used to encrypt the credentials file.
-Follow the next steps to resolve it.**
-
 ### Step 7: Add Your Google OAuth Credentials
 ```bash
 google:
