@@ -50,23 +50,23 @@ bundle install
 The reason is because you have cloned the repository and the master key is not the same as the one used to encrypt the credentials file.
 Follow the next steps to resolve it.**
 
-### Step 1: Generate a New Master Key
+### Step 4: Generate a New Master Key
 ```bash
 rails credentials:edit
 ```
 This will generate a new master key and open the credentials file in the editor.
 
-### Step 2: Delete the Old credentials.yml.enc File
+### Step 5: Delete the Old credentials.yml.enc File
 ```bash
 rm config/credentials.yml.enc
 ```
 
-### Step 3: Edit the Credentials For MAC
+### Step 6: Edit the Credentials For MAC
 ```bash
 EDITOR="vim" rails credentials:edit
 ```
-
-### Step 3: Edit the Credentials For Linux
+**OR**
+### Step 6: Edit the Credentials For Linux
 ```bash
  $env:EDITOR="code --wait"
  rails credentials:edit
@@ -116,7 +116,7 @@ to enable Google OAuth for the application. This allows the app to authenticate 
 The reason is because you have cloned the repository and the master key is not the same as the one used to encrypt the credentials file.
 Follow the next steps to resolve it.**
 
-### Step 4: Add Your Google OAuth Credentials
+### Step 7: Add Your Google OAuth Credentials
 ```bash
 google:
   client_id: your_client_id
@@ -129,7 +129,7 @@ After adding your credentials, save the changes and exit the editor.
 
 Now, your Google OAuth credentials are securely stored in the Rails credentials file and your application will be able to use them for authentication. Make sure to keep your credentials safe and secret.  **NEVER** commit plaintext credentials and **NEVER NEVER NEVER** commit the `master.key` file (`/config/master.key` is already in the `.gitignore` file for your safety).
 
-### Step 5: Whitelist Tester's Email
+### Step 8: Whitelist Tester's Email
 In the `seed.rb` file, add your email to the list of whitelisted emails.
 Just follow the format of the other emails in the list.
 Do not forget to add the role `Admin` to your email.
@@ -141,7 +141,7 @@ Run the rails db:seed command to seed the database with the whitelisted emails:
 rails db:seed
 ```
 
-### Step 5: Start the Application
+### Step 9: Start the Application
 Run the Rails server:
 ```bash
 rails s
