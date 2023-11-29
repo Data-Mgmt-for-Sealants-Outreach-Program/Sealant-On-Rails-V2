@@ -92,15 +92,12 @@
     <h1>School Stats Version 2</h1>
 
     <br>
-    <div>         
-        <%= link_to 'Impact Report', statistics_impactReport_path %>   
-    </div>
     <br>
     <br>
     <div class="tab">
       <button class="tablinks btn btn-primary" onclick="openTab(event, 'chartTab')">Chart</button>
       <button class="tablinks btn btn-primary" onclick="openTab(event, 'tableTab')">Table</button>
-      <%= link_to 'Impact Report', statistics_impactReport_path, class: 'btn btn-primary' %>
+      <button class="tablinks btn btn-primary" onclick="redirectToImpactReport()">Impact Report</button>
     </div>
 
     <div id="chartTab" class="tabcontent">
@@ -152,6 +149,9 @@
         }
         document.getElementById(tabName).style.display = 'block';
         evt.currentTarget.className += ' active';
+    }
+    function redirectToImpactReport() {
+        window.location.href = '<%= statistics_impactReport_path %>';
     }
     var ctxGrouped1 = document.getElementById('groupedChart1').getContext('2d');
         var groupedChart1 = new Chart(ctxGrouped1, {

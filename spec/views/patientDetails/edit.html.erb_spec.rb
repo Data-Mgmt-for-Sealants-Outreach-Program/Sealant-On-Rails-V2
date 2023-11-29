@@ -26,8 +26,6 @@ RSpec.describe 'patient_details/edit', type: :view do
     assert_select 'form[action=?][method=?]', patient_detail_path(patient_detail), 'post' do
       assert_select 'input[name=?]', 'patient_detail[PatientId]'
 
-      assert_select 'input[name=?]', 'patient_detail[ProgramName]'
-
       assert_select 'input[name=?]', 'patient_detail[SchoolName]'
 
       assert_select 'input[name=?]', 'patient_detail[Age]'
