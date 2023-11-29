@@ -176,11 +176,17 @@ Project Name: School Sealant Program Data Management System
 Organization: Texas A&M School of Dentistry
 
 Contact (Project Director): Dr. Amal Noureldin (anoureldin@tamu.edu)
+
 Contact (Project Developer 1): Jaydeep (jdr@tamu.edu)
+
 Contact (Project Developer 2): Apurva (apurva.mandalika@tamu.edu)
+
 Contact (Project Developer 3): Manisha (mpanda27@tamu.edu)
+
 Contact (Project Developer 4): Sarah (sgullion@tamu.edu)
+
 Contact (Project Developer 5): Sushant (sushant.shelar@tamu.edu)
+
 Contact (Project Developer 6): Jay (jaynehete@tamu.edu)
 
 Description:
