@@ -47,7 +47,7 @@ function closePopup(Id, popupId) {
     // Close the popup
     closePopupActual(popupId);
     updateUntreatedCavities();
-    updateReferredTreatment();
+    updatePrescribeSealant();
     updateCariesExperience();
     updateSealantPresent();
     updateRecommendedResealed();

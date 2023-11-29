@@ -13,19 +13,19 @@ function updateUntreatedCavities() {
     untreatedCavitiesElement.textContent = untreatedCavitiesCount;
 }
 
-function updateReferredTreatment() {
-    let ReferredTreatmentCount = 0;
+function updatePrescribeSealant() {
+    let PrescribeSealantCount = 0;
 
     for (const tooth in selectedOptions1) {
-        if (selectedOptions1[tooth] === 'RS') {
-            ReferredTreatmentCount++;
+        if (selectedOptions1[tooth] === 'PS') {
+            PrescribeSealantCount++;
         }
     }
 
-    const referredTreatmentElement = document.getElementById('referredTreatment');
+    const prescribeSealantElement = document.getElementById('prescribeSealant');
 
     // Update the "Untreated Cavities" field
-    referredTreatmentElement.textContent = ReferredTreatmentCount;
+    prescribeSealantElement.textContent = prescribeSealantCount;
 }
 
 function updateCariesExperience() {
