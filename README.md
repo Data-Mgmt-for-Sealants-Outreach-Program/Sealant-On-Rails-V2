@@ -72,55 +72,6 @@ EDITOR="vim" rails credentials:edit
  rails credentials:edit
 ```
 
-### Step 4: Add Your Google OAuth Credentials
-```bash
-google:
-  client_id: your_client_id
-  client_secret: your_client_secret
-```
-
-*Note: Replace `your_client_id` and `your_client_secret` with your own Google OAuth credentials. Do not include any quotes around the actual credentials.*
-
-After adding your credentials, save the changes and exit the editor.
-
-
-### Step 4: Set Up the Database
-Set up the database for the application:
-
-Migration:
-```bash
-rails db:migrate
-```
-
-Seed:
-```bash
-rails db:seed
-```
-
-
-
-### Step 1: Generate a New Master Key
-```bash
-rails credentials:edit
-```
-This will generate a new master key and open the credentials file in the editor.
-
-### Step 2: Delete the Old credentials.yml.enc File
-```bash
-rm config/credentials.yml.enc
-```
-
-### Step 3: Edit the Credentials For MAC
-```bash
-EDITOR="vim" rails credentials:edit
-```
-
-### Step 3: Edit the Credentials For Linux
-```bash
- $env:EDITOR="code --wait"
- rails credentials:edit
-```
-
 ## Setup Google OAuth On Google's End
 
 This section walks you through setting up Google OAuth for the application in the Google Developer Console.
