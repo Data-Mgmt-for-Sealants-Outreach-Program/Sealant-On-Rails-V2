@@ -193,8 +193,8 @@ class StatisticsController < ApplicationController
     @school_hrs_chart_data = {
       labels: ['Dentist Hours', 'Hygenist Hours', 'Assistant Hours', 'Other Hours'],
       datasets: [{
-        data: [@event_data.pluck(:DenHrs).sum, @event_data.pluck(:HygHours).sum, @event_data.pluck(:AssistantHrs).sum,
-               @event_data.pluck(:OtherHrs).sum],
+        data: [@event_data.pluck(:DenHrs).compact.sum, @event_data.pluck(:HygHours).compact.sum, @event_data.pluck(:AssistantHrs).compact.sum,
+               @event_data.pluck(:OtherHrs).compact.sum],
         backgroundColor: ['rgba(75, 192, 192, 0.2)',
                           'rgba(255, 99, 132, 0.2)',
                           'rgba(255, 206, 86, 0.2)',
@@ -211,8 +211,8 @@ class StatisticsController < ApplicationController
     @travel_hrs_chart_data = {
       labels: ['Dentist Travel Hours', 'Hygenist Travel Hours', 'Assistant Travel Hours', 'Other Travel Hours'],
       datasets: [{
-        data: [@event_data.pluck(:DenTravelHrs).sum, @event_data.pluck(:HygTravelHrs).sum,
-               @event_data.pluck(:AssistantHrs).sum, @event_data.pluck(:OtherTravelHrs).sum],
+        data: [@event_data.pluck(:DenTravelHrs).compact.sum, @event_data.pluck(:HygTravelHrs).compact.sum,
+               @event_data.pluck(:AssistantHrs).compact.sum, @event_data.pluck(:OtherTravelHrs).compact.sum],
         backgroundColor: ['rgba(75, 192, 192, 0.2)',
                           'rgba(255, 99, 132, 0.2)',
                           'rgba(255, 206, 86, 0.2)',
@@ -229,8 +229,8 @@ class StatisticsController < ApplicationController
     @travel_mil_chart_data = {
       labels: ['Dentist Travel Miles', 'Hygenist Travel Miles', 'Assistant Travel Miles', 'Other Travel Miles'],
       datasets: [{
-        data: [@event_data.pluck(:DenTravelMil).sum, @event_data.pluck(:HygTravelMil).sum,
-               @event_data.pluck(:AssistantTravelMil).sum, @event_data.pluck(:OtherTravelMiles).sum],
+        data: [@event_data.pluck(:DenTravelMil).compact.sum, @event_data.pluck(:HygTravelMil).compact.sum,
+               @event_data.pluck(:AssistantTravelMil).compact.sum, @event_data.pluck(:OtherTravelMiles).compact.sum],
         backgroundColor: ['rgba(75, 192, 192, 0.2)',
                           'rgba(255, 99, 132, 0.2)',
                           'rgba(255, 206, 86, 0.2)',
@@ -251,7 +251,7 @@ class StatisticsController < ApplicationController
       labels: school_data.keys,
       datasets: [{
         label: 'Consent Forms Distributed',
-        data: school_data.values.map { |school| school.map(&:ConsentFD).sum },
+        data: school_data.values.map { |school| school.map(&:ConsentFD).compact.sum },
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1
@@ -264,28 +264,28 @@ class StatisticsController < ApplicationController
       datasets: [
         {
           label: 'Dentist',
-          data: school_data.values.map { |school| school.map(&:DenHrs).sum },
+          data: school_data.values.map { |school| school.map(&:DenHrs).compact.sum },
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 1
         },
         {
           label: 'Hygienist',
-          data: school_data.values.map { |school| school.map(&:HygHours).sum },
+          data: school_data.values.map { |school| school.map(&:HygHours).compact.sum },
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1
         },
         {
           label: 'Assistant',
-          data: school_data.values.map { |school| school.map(&:AssistantHrs).sum },
+          data: school_data.values.map { |school| school.map(&:AssistantHrs).compact.sum },
           backgroundColor: 'rgba(255, 206, 86, 0.2)',
           borderColor: 'rgba(255, 206, 86, 1)',
           borderWidth: 1
         },
         {
           label: 'Other',
-          data: school_data.values.map { |school| school.map(&:OtherHrs).sum },
+          data: school_data.values.map { |school| school.map(&:OtherHrs).compact.sum },
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           borderColor: 'rgba(54, 162, 235, 1)',
           borderWidth: 1
@@ -298,28 +298,28 @@ class StatisticsController < ApplicationController
       datasets: [
         {
           label: 'Dentist',
-          data: school_data.values.map { |school| school.map(&:DenTravelHrs).sum },
+          data: school_data.values.map { |school| school.map(&:DenTravelHrs).compact.sum },
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 1
         },
         {
           label: 'Hygienist',
-          data: school_data.values.map { |school| school.map(&:HygTravelHrs).sum },
+          data: school_data.values.map { |school| school.map(&:HygTravelHrs).compact.sum },
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1
         },
         {
           label: 'Assistant',
-          data: school_data.values.map { |school| school.map(&:AssistantTravelHrs).sum },
+          data: school_data.values.map { |school| school.map(&:AssistantTravelHrs).compact.sum },
           backgroundColor: 'rgba(255, 206, 86, 0.2)',
           borderColor: 'rgba(255, 206, 86, 1)',
           borderWidth: 1
         },
         {
           label: 'Other',
-          data: school_data.values.map { |school| school.map(&:OtherTravelHrs).sum },
+          data: school_data.values.map { |school| school.map(&:OtherTravelHrs).compact.sum },
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           borderColor: 'rgba(54, 162, 235, 1)',
           borderWidth: 1
@@ -332,28 +332,28 @@ class StatisticsController < ApplicationController
       datasets: [
         {
           label: 'Dentist',
-          data: school_data.values.map { |school| school.map(&:DenTravelMil).sum },
+          data: school_data.values.map { |school| school.map(&:DenTravelMil).compact.sum },
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 1
         },
         {
           label: 'Hygienist',
-          data: school_data.values.map { |school| school.map(&:HygTravelMil).sum },
+          data: school_data.values.map { |school| school.map(&:HygTravelMil).compact.sum },
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1
         },
         {
           label: 'Assistant',
-          data: school_data.values.map { |school| school.map(&:AssistantTravelMil).sum },
+          data: school_data.values.map { |school| school.map(&:AssistantTravelMil).compact.sum },
           backgroundColor: 'rgba(255, 206, 86, 0.2)',
           borderColor: 'rgba(255, 206, 86, 1)',
           borderWidth: 1
         },
         {
           label: 'Other',
-          data: school_data.values.map { |school| school.map(&:OtherTravelMiles).sum },
+          data: school_data.values.map { |school| school.map(&:OtherTravelMiles).compact.sum },
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           borderColor: 'rgba(54, 162, 235, 1)',
           borderWidth: 1
@@ -366,14 +366,14 @@ class StatisticsController < ApplicationController
       datasets: [
         {
           label: 'Number of Vehicles Driven',
-          data: school_data.values.map { |school| school.map(&:NumberOfSSPDriven).sum },
+          data: school_data.values.map { |school| school.map(&:NumberOfSSPDriven).compact.sum },
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 1
         },
         {
           label: 'Total Miles Driven',
-          data: school_data.values.map { |school| school.map(&:TotalMilesDriven).sum },
+          data: school_data.values.map { |school| school.map(&:TotalMilesDriven).compact.sum },
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1
