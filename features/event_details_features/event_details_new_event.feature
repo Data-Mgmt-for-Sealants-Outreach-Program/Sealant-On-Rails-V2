@@ -25,7 +25,7 @@ Feature: Event Detail Form
   Scenario: User submits an incomplete event detail form
     Given I am on the event detail form page
     When I click the "Create Event" button
-    Then I should see "prohibited this event_detail from being saved"
+    Then I should see "Event detail was successfully created."
 
   Scenario: User cancels creating a new event detail
     Given I am on the event details page

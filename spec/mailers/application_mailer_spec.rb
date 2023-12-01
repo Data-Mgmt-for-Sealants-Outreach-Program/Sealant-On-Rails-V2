@@ -5,13 +5,11 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationMailer, type: :mailer do
+  
   describe 'default settings' do
     it 'uses the correct "from" address' do
       expect(ApplicationMailer.default[:from]).to eq('from@example.com')
     end
 
-    # it 'uses the correct layout' do
-    #   expect(ApplicationMailer.default[:layout]).to eq('mailer')
-    # end
   end
 end
