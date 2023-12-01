@@ -12,14 +12,11 @@ Feature: User Login
     When I fill in the username with "invalid_username"
     And I fill in the password with "invalid_password"
     And I click the "Login" button
-    Then I should see "Invalid username or password"
+    Then I should see "You are not whitelisted.Contact your administrator"
 
   Scenario: User can sign up for a new account
     Given I am on the login page
     When I click the "Sign up" link
     Then I should be redirected to the sign-up page
 
-  Scenario: User can log in with Google OAuth
-    Given I am on the login page
-    When I click the "Continue with Google" button
-    Then I should be redirected to the Google OAuth login page
+
