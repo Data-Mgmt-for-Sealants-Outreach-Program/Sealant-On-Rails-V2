@@ -91,7 +91,7 @@ RSpec.describe StatisticsController, type: :controller do
       Age: 19, Grade: 9, Insurance: 'bhvyvbb')
 
       ChildLevelDetail.create!(
-        PID: 'some_pid',
+        PID: 486,
         TeethScreening: 'some_screening',
         TeethPreventative: 'some_preventative',
         TeethFollowup: 'some_followup',
@@ -139,10 +139,13 @@ RSpec.describe StatisticsController, type: :controller do
       get :impactReport
 
       expect(assigns(:school_data)).to be_empty
-      expect(assigns(:age_sealants_chart_data)).to be_empty
-      expect(assigns(:grade_sealants_chart_data)).to be_empty
+      expect(assigns(:age_sealants_chart_data)[:datasets].first[:data]).to be_empty
+      expect(assigns(:age_sealants_chart_data)[:labels]).to be_empty
+      expect(assigns(:grade_sealants_chart_data)[:datasets].first[:data]).to be_empty
+      expect(assigns(:grade_sealants_chart_data)[:labels]).to be_empty
       expect(assigns(:school_data_grouped)).to be_empty
-      expect(assigns(:chart_data1)).to be_empty
+      expect(assigns(:chart_data1)[:datasets].first[:data]).to be_empty
+      expect(assigns(:chart_data1)[:labels]).to be_empty
     end
   end
 end

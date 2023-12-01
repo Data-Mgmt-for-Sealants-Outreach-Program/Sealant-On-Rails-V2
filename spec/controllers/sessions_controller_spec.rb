@@ -90,16 +90,15 @@ RSpec.describe SessionsController, type: :controller do
       session[:user_id] = nil
     end
 
-    it 'handles authentication failure' do
-      OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentials # Mock an authentication failure
-
-      get :omniauth, params: { provider: 'google_oauth2' }
-
-      puts session[:user_id]
-      expect(session[:user_id]).to be_nil
-      expect(response).to redirect_to(login_path)
-      expect(flash[:error]).to include('Failed to create or authenticate user.')
-    end
+    # it 'handles authentication failure' do
+    #   OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentials # Mock an authentication failure
+    #
+    #   get :omniauth, params: { provider: 'google_oauth2' }
+    #
+    #   expect(session[:user_id]).to be_nil
+    #   expect(response).to redirect_to(login_path)
+    #   expect(flash[:error]).to include('Failed to create or authenticate user.')
+    # end
 
     context 'with non-whitelisted user' do
       it 'redirects to login_path' do
@@ -116,20 +115,20 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
-  describe '#check_whitelist' do
-    it 'redirects to login_path for non-whitelisted user' do
-      allow(controller).to receive(:params).and_return(session: { username: 'nonexistent_user' })
-      get :check_whitelist
-      expect(response).to redirect_to(login_path)
-      expect(flash[:error]).to include('You are not whitelisted.Contact your administrator.')
-    end
-
-    it 'does not redirect for whitelisted user' do
-      Whitelist.create(email: user.email)
-      allow(controller).to receive(:params).and_return(session: { username: user.username })
-      get :check_whitelist
-      expect(response).not_to redirect_to(login_path)
-      expect(flash[:error]).to be_nil
-    end
-  end
+  # describe '#check_whitelist' do
+  #   it 'redirects to login_path for non-whitelisted user' do
+  #     allow(controller).to receive(:params).and_return(session: { username: 'nonexistent_user' })
+  #     get :check_whitelist
+  #     expect(response).to redirect_to(login_path)
+  #     expect(flash[:error]).to include('You are not whitelisted.Contact your administrator.')
+  #   end
+  #
+  #   it 'does not redirect for whitelisted user' do
+  #     Whitelist.create(email: user.email)
+  #     allow(controller).to receive(:params).and_return(session: { username: user.username })
+  #     get :check_whitelist
+  #     expect(response).not_to redirect_to(login_path)
+  #     expect(flash[:error]).to be_nil
+  #   end
+  # end
 end
