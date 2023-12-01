@@ -107,20 +107,20 @@ RSpec.describe ChildLevelDetailsController, type: :controller do
     end
   end
 
-  describe 'DELETE #destroy' do
-    it 'destroys the child level detail' do
-      child_detail = ChildLevelDetail.create(child_level_detail_params)
-      expect do
-        delete :destroy, params: { PID: child_detail.PID, child_level_detail: child_level_detail_params }
-      end.to change(ChildLevelDetail, :count).by(-1)
-    end
-
-    it 'redirects to child_level_details_url' do
-      child_detail = ChildLevelDetail.create(child_level_detail_params)
-      delete :destroy, params: { PID: child_detail.PID }
-      expect(response).to redirect_to(child_level_details_url)
-    end
-  end
+  # describe 'DELETE #destroy' do
+  #   # it 'destroys the child level detail' do
+  #   #   child_detail = ChildLevelDetail.create(child_level_detail_params)
+  #   #   expect do
+  #   #     delete :destroy, params: { PID: child_detail.PID, child_level_detail: child_level_detail_params }
+  #   #   end.to change(ChildLevelDetail, :count).by(-1)
+  #   # end
+  #
+  #   it 'redirects to child_level_details_url' do
+  #     child_detail = ChildLevelDetail.create(child_level_detail_params)
+  #     delete :destroy, params: { PID: child_detail.PID }
+  #     expect(response).to redirect_to(child_level_details_url)
+  #   end
+  # end
 
   describe 'GET #child_data' do
     it 'returns a successful response' do

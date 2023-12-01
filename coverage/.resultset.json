@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/helpers/application_helper.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/helpers/application_helper.rb": {
         "lines": [
           null,
           null,
@@ -9,7 +9,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/helpers/child_details_helper.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/helpers/child_details_helper.rb": {
         "lines": [
           null,
           null,
@@ -17,7 +17,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/helpers/child_level_details_helper.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/helpers/child_level_details_helper.rb": {
         "lines": [
           null,
           null,
@@ -25,7 +25,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/helpers/event_details_helper.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/helpers/event_details_helper.rb": {
         "lines": [
           null,
           null,
@@ -33,7 +33,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/helpers/excel_exports_helper.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/helpers/excel_exports_helper.rb": {
         "lines": [
           null,
           null,
@@ -41,7 +41,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/helpers/patient_details_helper.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/helpers/patient_details_helper.rb": {
         "lines": [
           null,
           null,
@@ -49,7 +49,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/helpers/sessions_helper.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/helpers/sessions_helper.rb": {
         "lines": [
           null,
           null,
@@ -57,7 +57,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/helpers/statistics_helper.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/helpers/statistics_helper.rb": {
         "lines": [
           null,
           null,
@@ -65,7 +65,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/helpers/users_helper.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/helpers/users_helper.rb": {
         "lines": [
           null,
           null,
@@ -73,7 +73,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/helpers/whitelists_helper.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/helpers/whitelists_helper.rb": {
         "lines": [
           null,
           null,
@@ -81,17 +81,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/channels/application_cable/channel.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/channels/application_cable/connection.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/channels/application_cable/channel.rb": {
         "lines": [
           null,
           null,
@@ -101,7 +91,17 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/controllers/child_level_details_controller.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/channels/application_cable/connection.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/controllers/child_level_details_controller.rb": {
         "lines": [
           null,
           null,
@@ -172,7 +172,7 @@
           null,
           null,
           1,
-          2,
+          0,
           null,
           0,
           0,
@@ -191,7 +191,7 @@
           null,
           null,
           1,
-          6,
+          4,
           null,
           null,
           null,
@@ -208,7 +208,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/controllers/application_controller.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -222,16 +222,16 @@
           null,
           null,
           1,
-          32,
+          31,
           null,
           null,
           1,
-          38,
+          37,
           null,
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/controllers/event_details_controller.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/controllers/event_details_controller.rb": {
         "lines": [
           null,
           null,
@@ -261,24 +261,24 @@
           null,
           2,
           2,
+          4,
           2,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
           1,
-          null,
-          2,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
           2,
           2,
+          4,
           2,
-          1,
           null,
-          2,
-          1,
+          0,
+          0,
           null,
           null,
           null,
@@ -308,7 +308,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/controllers/excel_exports_controller.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/controllers/excel_exports_controller.rb": {
         "lines": [
           null,
           null,
@@ -496,7 +496,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/controllers/patient_details_controller.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/controllers/patient_details_controller.rb": {
         "lines": [
           null,
           null,
@@ -579,7 +579,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/controllers/sessions_controller.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/controllers/sessions_controller.rb": {
         "lines": [
           null,
           null,
@@ -611,16 +611,16 @@
           null,
           null,
           1,
-          2,
+          1,
           null,
-          2,
-          2,
-          2,
+          1,
+          1,
+          1,
           null,
           null,
-          2,
-          2,
-          2,
+          1,
+          1,
+          1,
           null,
           0,
           0,
@@ -628,8 +628,8 @@
           null,
           null,
           1,
-          6,
-          6,
+          5,
+          5,
           null,
           4,
           4,
@@ -637,7 +637,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/controllers/statistics_controller.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/controllers/statistics_controller.rb": {
         "lines": [
           null,
           null,
@@ -670,6 +670,47 @@
           null,
           null,
           1,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          3,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          3,
+          null,
           1,
           null,
           null,
@@ -677,17 +718,9 @@
           null,
           null,
           null,
+          2,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
+          2,
           null,
           null,
           null,
@@ -695,89 +728,6 @@
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
           null,
           null,
           null,
@@ -812,11 +762,61 @@
           null,
           null,
           1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          8,
+          8,
           4,
-          4,
-          0,
           null,
-          4,
+          8,
           null,
           null,
           1,
@@ -1025,7 +1025,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/controllers/users_controller.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -1052,7 +1052,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/controllers/whitelists_controller.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/controllers/whitelists_controller.rb": {
         "lines": [
           null,
           null,
@@ -1138,7 +1138,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/jobs/application_job.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/jobs/application_job.rb": {
         "lines": [
           null,
           null,
@@ -1151,7 +1151,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/mailers/application_mailer.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/mailers/application_mailer.rb": {
         "lines": [
           null,
           null,
@@ -1161,7 +1161,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/models/child_level_detail.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/models/child_level_detail.rb": {
         "lines": [
           null,
           null,
@@ -1172,7 +1172,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/models/application_record.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/models/application_record.rb": {
         "lines": [
           null,
           null,
@@ -1181,7 +1181,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/models/patient_detail.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/models/patient_detail.rb": {
         "lines": [
           null,
           null,
@@ -1201,7 +1201,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/models/event_detail.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/models/event_detail.rb": {
         "lines": [
           null,
           null,
@@ -1232,7 +1232,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/models/whitelist.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/models/whitelist.rb": {
         "lines": [
           null,
           null,
@@ -1248,7 +1248,7 @@
           null
         ]
       },
-      "/Users/jaynehete/Desktop/TAMU/CSCE 606 Software Engineering/new project test/Sealant-On-Rails-V2/app/models/user.rb": {
+      "/Users/jaydeepradadiya/Documents/GitHub/Data_Mgmt_for_Sealants_Outreach_Program/Sealant-On-Rails/app/models/user.rb": {
         "lines": [
           null,
           null,
@@ -1260,7 +1260,7 @@
         ]
       }
     },
-    "timestamp": 1701274556
+    "timestamp": 1701451132
   },
   "Cucumber Features": {
     "coverage": {
