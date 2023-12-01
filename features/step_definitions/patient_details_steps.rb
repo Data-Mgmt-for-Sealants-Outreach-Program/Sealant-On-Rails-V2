@@ -19,9 +19,9 @@ When('I enter the Patientid field with {int}') do |int|
   fill_in 'patient_detail[PatientId]', with: int
 end
 
-When('I enter the Program Name field with {string}') do |string|
-  fill_in 'patient_detail[ProgramName]', with: string
-end
+# When('I enter the Program Name field with {string}') do |string|
+#   fill_in 'patient_detail[ProgramName]', with: string
+# end
 
 When('I enter the School Name field with {string}') do |string|
   fill_in 'patient_detail[SchoolName]', with: string

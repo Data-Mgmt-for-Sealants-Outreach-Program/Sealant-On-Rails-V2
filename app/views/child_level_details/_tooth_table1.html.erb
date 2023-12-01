@@ -25,8 +25,7 @@
       <% selected_value = teeth_screening[tooth_number.to_s] %>
       <button class="button" id="ScreeningButton<%= tooth_number %>" data-popup="popup1<%= tooth_number %>" onclick="openPopup('popup1<%= tooth_number %>')">
     <%= selected_value.present? ? selected_value : 'Make a Selection' %>
-</button>
-      </button>
+    </button>
     </td>
   <% end %>
 </tr>
