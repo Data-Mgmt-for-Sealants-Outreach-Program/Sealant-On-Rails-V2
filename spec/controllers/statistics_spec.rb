@@ -91,7 +91,7 @@ RSpec.describe StatisticsController, type: :controller do
       Age: 19, Grade: 9, Insurance: 'bhvyvbb')
 
       ChildLevelDetail.create!(
-        PID: 'some_pid',
+        PID: 486,
         TeethScreening: 'some_screening',
         TeethPreventative: 'some_preventative',
         TeethFollowup: 'some_followup',
