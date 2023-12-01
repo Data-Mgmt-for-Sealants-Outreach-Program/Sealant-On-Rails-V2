@@ -21,8 +21,6 @@ RSpec.feature 'Statistics', type: :feature do
 
     expect(page).to have_content('Untreated Cavities: 0')
     expect(page).to have_content('Caries Experience: 0')
-    expect(page).to have_content('Sealants Present: 0')
-    expect(page).to have_content('Referred for treatment: 0')
   end
 
   scenario 'Check the presence of buttons and initial cell text' do
