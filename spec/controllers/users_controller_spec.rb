@@ -29,9 +29,9 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'creates a new user' do
-        expect {
+        expect do
           post :create, params: valid_user_params
-        }.to change(User, :count).by(1)
+        end.to change(User, :count).by(1)
       end
 
       it 'logs in the new user and redirects to root path' do
@@ -40,10 +40,10 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to redirect_to(root_path)
       end
 
-    #   it 'renders the new template with invalid user parameters' do
-    #     post :create, params: invalid_user_params
-    #     expect(response).to render_template('new')
-    #   end
+      #   it 'renders the new template with invalid user parameters' do
+      #     post :create, params: invalid_user_params
+      #     expect(response).to render_template('new')
+      #   end
     end
 
     context 'with invalid user parameters' do
@@ -59,9 +59,9 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'does not create a new user' do
-        expect {
+        expect do
           post :create, params: invalid_user_params
-        }.not_to change(User, :count)
+        end.not_to change(User, :count)
       end
 
       it 're-renders the new template' do
@@ -71,4 +71,3 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 end
-

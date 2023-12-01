@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class PatientDetail < ApplicationRecord
-
-  self.primary_key = "PID"
+  self.primary_key = 'PID'
 
   validates :PatientId, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :SchoolName, presence: true

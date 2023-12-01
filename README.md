@@ -32,8 +32,8 @@ gem install rails -v 7.1.1
 ### Step 1: Fork the Repository
 Fork the repository to your GitHub account.
 
-### Step 2: Clone the Repository
-Clone the repository to your local machine:
+### Step 2: Clone the new Forked Repository
+Clone the Forked repository to your local machine:
 
 ```bash
 git clone [forked-repository-url]
@@ -50,56 +50,31 @@ bundle install
 The reason is because you have cloned the repository and the master key is not the same as the one used to encrypt the credentials file.
 Follow the next steps to resolve it.**
 
-### Step 1: Generate a New Master Key
+### Step 4: Generate a New Master Key
 ```bash
 rails credentials:edit
 ```
 This will generate a new master key and open the credentials file in the editor.
 
-### Step 2: Delete the Old credentials.yml.enc File
+### Step 5: Delete the Old credentials.yml.enc File
 ```bash
 rm config/credentials.yml.enc
 ```
 
-### Step 3: Edit the Credentials For MAC
+### Step 6: Edit the Credentials For MAC
 ```bash
 EDITOR="vim" rails credentials:edit
 ```
-
-### Step 3: Edit the Credentials For Linux
+**OR**
+### Step 6: Edit the Credentials For Linux
 ```bash
  $env:EDITOR="code --wait"
  rails credentials:edit
 ```
 
-### Step 4: Add Your Google OAuth Credentials
-```bash
-google:
-  client_id: your_client_id
-  client_secret: your_client_secret
-```
-
-*Note: Replace `your_client_id` and `your_client_secret` with your own Google OAuth credentials. Do not include any quotes around the actual credentials.*
-
-After adding your credentials, save the changes and exit the editor.
-
-
-### Step 4: Set Up the Database
-Set up the database for the application:
-
-Migration:
-```bash
-rails db:migrate
-```
-
-Seed:
-```bash
-rails db:seed
-```
-
 ## Setup Google OAuth On Google's End
 
-This section walks you through setting up Google OAuth for the application in the Google Developer Console. 
+This section walks you through setting up Google OAuth for the application in the Google Developer Console.
 Here are the steps and important information:
 
 ### Step 1: Create a New Project in Google Developer Console
@@ -132,38 +107,11 @@ If you choose to add test users, do so on this page and click "Save and Continue
 6. You will receive a client ID and client secret. **Save this information.**
 7. Ensure that your client ID is enabled.
 
-By following these steps, you have set up the necessary configurations in the Google Developer Console 
+By following these steps, you have set up the necessary configurations in the Google Developer Console
 to enable Google OAuth for the application. This allows the app to authenticate users using their Google accounts.
 
 ## Add OAuth ID and Secret to Rails Credentials
-
-**You will face an error here regarding Rails not being able to decrypt the credentials file. 
-The reason is because you have cloned the repository and the master key is not the same as the one used to encrypt the credentials file.
-Follow the next steps to resolve it.**
-
-### Step 1: Generate a New Master Key
-```bash
-rails credentials:edit
-```
-This will generate a new master key and open the credentials file in the editor.
-
-### Step 2: Delete the Old credentials.yml.enc File
-```bash
-rm config/credentials.yml.enc
-```
-
-### Step 3: Edit the Credentials For MAC
-```bash
-EDITOR="vim" rails credentials:edit
-```
-
-### Step 3: Edit the Credentials For Linux
-```bash
- $env:EDITOR="code --wait"
- rails credentials:edit
-```
-
-### Step 4: Add Your Google OAuth Credentials
+### Step 7: Add Your Google OAuth Credentials
 ```bash
 google:
   client_id: your_client_id
@@ -176,7 +124,7 @@ After adding your credentials, save the changes and exit the editor.
 
 Now, your Google OAuth credentials are securely stored in the Rails credentials file and your application will be able to use them for authentication. Make sure to keep your credentials safe and secret.  **NEVER** commit plaintext credentials and **NEVER NEVER NEVER** commit the `master.key` file (`/config/master.key` is already in the `.gitignore` file for your safety).
 
-### Step 4: Whitelist Tester's Email
+### Step 8: Whitelist Tester's Email
 In the `seed.rb` file, add your email to the list of whitelisted emails.
 Just follow the format of the other emails in the list.
 Do not forget to add the role `Admin` to your email.
@@ -188,7 +136,7 @@ Run the rails db:seed command to seed the database with the whitelisted emails:
 rails db:seed
 ```
 
-### Step 5: Start the Application
+### Step 9: Start the Application
 Run the Rails server:
 ```bash
 rails s
@@ -227,7 +175,19 @@ Project Name: School Sealant Program Data Management System
 
 Organization: Texas A&M School of Dentistry
 
-Contact: Dr. Amal Noureldin (anoureldin@tamu.edu)
+Contact (Project Director): Dr. Amal Noureldin (anoureldin@tamu.edu)
+
+Contact (Project Developer 1): Jaydeep (jdr@tamu.edu)
+
+Contact (Project Developer 2): Apurva (apurva.mandalika@tamu.edu)
+
+Contact (Project Developer 3): Manisha (mpanda27@tamu.edu)
+
+Contact (Project Developer 4): Sarah (sgullion@tamu.edu)
+
+Contact (Project Developer 5): Sushant (sushant.shelar@tamu.edu)
+
+Contact (Project Developer 6): Jay (jaynehete@tamu.edu)
 
 Description:
 

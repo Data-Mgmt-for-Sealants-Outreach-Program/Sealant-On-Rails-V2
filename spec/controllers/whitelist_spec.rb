@@ -1,22 +1,24 @@
+# frozen_string_literal: true
+
 # spec/controllers/whitelists_controller_spec.rb
 
 require 'rails_helper'
 
 RSpec.describe WhitelistsController, type: :controller do
-    let(:admin_user) { User.create(email: 'admin@example.com') }
-    let(:non_admin_user) { User.create(email: 'user@example.com') }
-    let(:valid_attributes) { { email: 'test@example.com', role: 'admin' } }
-    let(:invalid_attributes) { { email: '', role: 'user' } }
-  
-    before do
-      # Mock the OmniAuth authentication process
-      OmniAuth.config.test_mode = true
-      OmniAuth.config.mock_auth[:provider] = :google_oauth2 # Replace with your actual OmniAuth provider
-  
-      # Manually set the current_user in the controller
-      allow(controller).to receive(:authenticate_admin!)
-      allow(controller).to receive(:current_user).and_return(admin_user)
-    end
+  let(:admin_user) { User.create(email: 'admin@example.com') }
+  let(:non_admin_user) { User.create(email: 'user@example.com') }
+  let(:valid_attributes) { { email: 'test@example.com', role: 'admin' } }
+  let(:invalid_attributes) { { email: '', role: 'user' } }
+
+  before do
+    # Mock the OmniAuth authentication process
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:provider] = :google_oauth2 # Replace with your actual OmniAuth provider
+
+    # Manually set the current_user in the controller
+    allow(controller).to receive(:authenticate_admin!)
+    allow(controller).to receive(:current_user).and_return(admin_user)
+  end
 
   describe 'GET #index' do
     it 'returns a success response' do
